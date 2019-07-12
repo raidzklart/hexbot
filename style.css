@@ -4,20 +4,20 @@ body {
 }
 
 #colour {
-    min-height: 200px;
+    min-height: 100px;
     border: 2px solid black;
     border-bottom: 1px;
 }
 
 #complimentary {
-    min-height: 200px;
+    min-height: 100px;
     border: 2px solid black;
     background-color: #1f3d44;
     border-bottom: 1px;
 }
 
 #between {
-    min-height: 200px;
+    min-height: 100px;
     border: 2px solid black;
     background-color: #fff;
 }

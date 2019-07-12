@@ -1,14 +1,19 @@
 $(document).ready(() => {
     console.log('Document ready');
-    $('#colour').css('background-color', 'pink')
-    let r = Number($('#colour').css('background-color').match(/\d+/g)[0]),
-        g = Number($('#colour').css('background-color').match(/\d+/g)[1]),
-        b = Number($('#colour').css('background-color').match(/\d+/g)[2])
-    $('#complimentary').css('background-color', oppositeHSL(RGBToHSL(r, g, b)))
-    $('#between').css('background-color', betweenHSL(RGBToHSL(r, g, b)))
-    console.log($('#colour').css('background-color'));
-    console.log($('#complimentary').css('background-color'));
-    console.log($('#between').css('background-color'));
+    fetch("https://api.noopschallenge.com/hexbot/")
+        .then((resp) => resp.json())
+        .then((data) => {
+            $('#colour').css('background-color', data.colors[0].value);;
+            console.log(`"${data.colors[0].value}"`);
+            let r = Number($('#colour').css('background-color').match(/\d+/g)[0]),
+                g = Number($('#colour').css('background-color').match(/\d+/g)[1]),
+                b = Number($('#colour').css('background-color').match(/\d+/g)[2])
+            $('#complimentary').css('background-color', oppositeHSL(RGBToHSL(r, g, b)))
+            $('#between').css('background-color', betweenHSL(RGBToHSL(r, g, b)))
+            console.log($('#colour').css('background-color'));
+            console.log($('#complimentary').css('background-color'));
+            console.log($('#between').css('background-color'));
+        })
 })
 
 function RGBToHSL(r, g, b) {
