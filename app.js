@@ -1,5 +1,9 @@
 $(document).ready(() => {
     console.log('Document ready');
+    getColour();
+})
+
+function getColour() {
     fetch("https://api.noopschallenge.com/hexbot/")
         .then((resp) => resp.json())
         .then((data) => {
@@ -14,7 +18,7 @@ $(document).ready(() => {
             console.log($('#complimentary').css('background-color'));
             console.log($('#between').css('background-color'));
         })
-})
+}
 
 function RGBToHSL(r, g, b) {
     // Make r, g, and b fractions of 1
