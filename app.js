@@ -1,5 +1,4 @@
 $(document).ready(() => {
-    console.log('Document ready');
     getColour();
 })
 
@@ -8,16 +7,42 @@ function getColour() {
         .then((resp) => resp.json())
         .then((data) => {
             $('#colour').css('background-color', data.colors[0].value);;
-            console.log(`"${data.colors[0].value}"`);
             let r = Number($('#colour').css('background-color').match(/\d+/g)[0]),
                 g = Number($('#colour').css('background-color').match(/\d+/g)[1]),
                 b = Number($('#colour').css('background-color').match(/\d+/g)[2])
             $('#complimentary').css('background-color', oppositeHSL(RGBToHSL(r, g, b)))
-            $('#between').css('background-color', betweenHSL(RGBToHSL(r, g, b)))
-            console.log($('#colour').css('background-color'));
-            console.log($('#complimentary').css('background-color'));
-            console.log($('#between').css('background-color'));
+            $('#split-complimentary').css('background-color', betweenHSL(RGBToHSL(r, g, b)))
+
+            showHexCodes()
         })
+}
+
+function showHexCodes() {
+    let colourHEX = [];
+    let colourRGB = $('#colour').css('background-color').match(/\d+/g)
+    colourRGB.map((colour) => {
+        colourHEX.push(Number(colour).toString(16));
+    })
+
+    let complimentaryHEX = [];
+    let complimentaryRGB = $('#complimentary').css('background-color').match(/\d+/g)
+    complimentaryRGB.map((colour) => {
+        complimentaryHEX.push(Number(colour).toString(16));
+    })
+
+    let splitComplimentaryHEX = [];
+    let splitComplimentaryRGB = $('#split-complimentary').css('background-color').match(/\d+/g)
+    splitComplimentaryRGB.map((colour) => {
+        splitComplimentaryHEX.push(Number(colour).toString(16));
+    })
+
+    $('#colour > h3').text(`#${colourHEX.join('')}`)
+    $('#complimentary > h3').text(`#${complimentaryHEX.join('')}`)
+    $('#split-complimentary > h3').text(`#${splitComplimentaryHEX.join('')}`)
+}
+
+function rgbToHex(rgb) {
+
 }
 
 function RGBToHSL(r, g, b) {
@@ -57,7 +82,6 @@ function RGBToHSL(r, g, b) {
     // Multiply l and s by 100
     s = +(s * 100).toFixed(1);
     l = +(l * 100).toFixed(1);
-    console.log("hsl(" + Math.floor(h) + "," + Math.floor(s) + "%," + Math.floor(l) + "%)");
     return ("hsl(" + Math.floor(h) + "," + Math.floor(s) + "%," + Math.floor(l) + "%)");
 }
 
@@ -68,7 +92,6 @@ function oppositeHSL(HSL) {
     if (h > 360) {
         h -= 360;
     };
-    console.log("hsl(" + Math.floor(h) + "," + Math.floor(s) + "%," + Math.floor(l) + "%)");
     return ("hsl(" + Math.floor(h) + "," + Math.floor(s) + "%," + Math.floor(l) + "%)");
 }
 
@@ -79,6 +102,5 @@ function betweenHSL(HSL) {
     if (h > 360) {
         h -= 360;
     };
-    console.log("hsl(" + Math.floor(h) + "," + Math.floor(s) + "%," + Math.floor(l) + "%)");
     return ("hsl(" + Math.floor(h) + "," + Math.floor(s) + "%," + Math.floor(l) + "%)");
 }
