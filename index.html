@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
     <title>Hexbot</title>
@@ -11,14 +11,17 @@
 
 <body>
     <h1>Hexbot</h1>
-    <div id="colour">
-        <h3></h3>
+    <div id="colour" class="colours">
+        <input type="text" id="colour-h3" /><button onclick="copyHex('colour-h3')" class="btn btn-sm">Copy Hex</button>
     </div>
-    <div id="complimentary">
-        <h3></h3>
+    <div id="complimentary" class="colours">
+        <input type="text" id="complimentary-h3" /><button onclick="copyHex('complimentary-h3')" class="btn btn-sm">Copy
+            Hex</button>
     </div>
-    <div id="split-complimentary">
-        <h3></h3>
+    <div id="split-complimentary" class="colours">
+        <input type="text" id="split-complimentary-h3" /><button onclick="copyHex('split-complimentary-h3')"
+            class="btn btn-sm">Copy
+            Hex</button>
     </div>
     <button class="btn" onclick="getColour()">New Colour</button>
     <script src="https://code.jquery.com/jquery-3.4.1.js"

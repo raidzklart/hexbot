@@ -1,23 +1,19 @@
 body {
     text-align: center;
     font-family: "Nunito", "Helvetica Neue", "Helvetica", sans-serif;
+    text-shadow: 1px 1px 1px #555;
+    color: #676767;
+    background-color: antiquewhite;
 }
 
-h3 {
+input {
     margin: 0;
-    padding-top: 10%;
+    padding: 5px;
+    background-color: antiquewhite;
+    max-width: 30%;
 }
 
-#colour {
-    min-height: 22vh;
-    border-bottom: 1px;
-}
-
-#complimentary {
-    min-height: 22vh;
-}
-
-#split-complimentary {
+.colours {
     min-height: 22vh;
 }
 
@@ -29,5 +25,18 @@ h3 {
     color: antiquewhite;
     border-radius: 10px;
     font-size: 20px;
+}
+
+.btn-sm {
+    margin: 0;
+    padding: 8px;
+    min-width: 10px;
+    min-height: 20px;
+    background-color: antiquewhite;
+    color: #676767;
     text-shadow: 1px 1px 1px #555;
+}
+
+.btn-sm:hover {
+    background-color: rgb(214, 199, 180);
 }

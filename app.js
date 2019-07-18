@@ -36,13 +36,9 @@ function showHexCodes() {
         splitComplimentaryHEX.push(Number(colour).toString(16));
     })
 
-    $('#colour > h3').text(`#${colourHEX.join('')}`)
-    $('#complimentary > h3').text(`#${complimentaryHEX.join('')}`)
-    $('#split-complimentary > h3').text(`#${splitComplimentaryHEX.join('')}`)
-}
-
-function rgbToHex(rgb) {
-
+    $('#colour-h3').val(`#${colourHEX.join('')}`)
+    $('#complimentary-h3').val(`#${complimentaryHEX.join('')}`)
+    $('#split-complimentary-h3').val(`#${splitComplimentaryHEX.join('')}`)
 }
 
 function RGBToHSL(r, g, b) {
@@ -103,4 +99,22 @@ function betweenHSL(HSL) {
         h -= 360;
     };
     return ("hsl(" + Math.floor(h) + "," + Math.floor(s) + "%," + Math.floor(l) + "%)");
+}
+
+function copyHex(id) {
+    /* Get the text field */
+    let copyText = document.getElementById(id);
+    console.log(id);
+
+    console.log(copyText);
+
+
+    /* Select the text field */
+    copyText.select();
+
+    /* Copy the text inside the text field */
+    document.execCommand("copy");
+
+    /* Alert the copied text */
+    alert("Copied the hex: " + copyText.value);
 }
